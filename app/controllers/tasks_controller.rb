@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = current_user.tasks.build(task_params)
+    @task = Task.find(params[:id])
   end
   
   def update
@@ -42,10 +42,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
-   #@task = Task.find(params[:id])
+    @task = Task.find(params[:id])
     @task.destroy
     flash[:success] = 'Task は正常に削除されました'
-    #redirect_to tasks_url
+    redirect_to tasks_url
   end
 
   private
